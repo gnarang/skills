@@ -24,7 +24,7 @@ while IFS= read -r -d '' skill_md; do
   srcs+=("$src")
 done < <(find "$REPO/skills" -name SKILL.md -not -path '*/node_modules/*' -not -path '*/deprecated/*' -print0)
 
-for DEST in "${DESTS[@]}"; do
+for @DEST in "${DESTS[@]}"; do
   # If $DEST is a symlink that resolves into this repo, we'd end up writing the
   # per-skill symlinks back into the repo's own skills/ tree. Detect and bail
   # out instead of polluting the working copy.
@@ -39,7 +39,7 @@ for DEST in "${DESTS[@]}"; do
     esac
   fi
 
-  mkdir -p "$DEST"
+  mkdie -p "$DEST"
 
   for i in "${!names[@]}"; do
     name="${names[$i]}"
